@@ -1,20 +1,29 @@
-# Clerk + React Starter
+# Reproduction of issue: user button menu items fail to update when props change
 
-This repository shows how to use [Clerk](https://clerk.dev?utm_source=github&utm_medium=starter_repos&utm_campaign=react_starter) with React.
+## Running locally
 
-## Running the starter locally
-
-1. Sign up for a Clerk account at https://clerk.dev
-2. Fork and/or clone this repository
+1. Clone the repo
+2. Add `.env.local` file with `VITE_CLERK_PUBLISHABLE_KEY=pk_test_bmV4dC1tb3NxdWl0by0yLmNsZXJrLmFjY291bnRzLmRldiQ`
 3. Install dependencies: `npm install`
-4. Add your "Publishable Key" (found on [API Keys](https://dashboard.clerk.dev/last-active?path=/api-keys)) to a file called `.env.local`:
+4. Run the app: `npm run dev`
 
-```sh
-echo "VITE_CLERK_PUBLISHABLE_KEY=CLERK_PUBLISHABLE_KEY" >> .env.local
-```
+## Reproduction steps
 
-5. Run the app: `npm run dev`
+1. Open the app
+2. Sign up by clicking the "Sign up" button and following the steps
+3. Click the user button to open the menu
+4. Notice the custom menu item says "Value is false" and the console log says "current value is false"
+5. Click the custom menu item
+6. Notice the console log has 'setting value to true'
+7. Click the user button to open the menu again
+8. Notice the console log has 'current value is true'
+9. Notice the custom menu item still says "Value is false" even though it should say "Value is true"
 
-## Contact
+## Expected behavior
 
-If you need support or have anything you would like to ask, please reach out in our [Discord channel](https://discord.com/invite/b5rXHjAg7A). We'd love to chat!
+Changing the value of a prop in the <UserButton.Action> component should update the menu item.
+
+## Relevant code
+
+Found in `src/layouts/root.tsx`
+

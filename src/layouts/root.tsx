@@ -28,6 +28,7 @@ const DotIcon = () => {
 export default function RootLayout() {
   const navigate = useNavigate();
   const [testState, setTestState] = useState(false);
+  console.log('current value is', testState);
 
   return (
     <ClerkProvider
