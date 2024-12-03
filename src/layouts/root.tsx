@@ -5,6 +5,7 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/clerk-react';
+import { useState } from 'react';
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -12,8 +13,21 @@ if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key');
 }
 
+const DotIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      fill="currentColor"
+    >
+      <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" />
+    </svg>
+  );
+};
+
 export default function RootLayout() {
   const navigate = useNavigate();
+  const [testState, setTestState] = useState(false);
 
   return (
     <ClerkProvider
@@ -27,7 +41,18 @@ export default function RootLayout() {
             <p>Clerk + React + React Router App</p>
           </div>
           <SignedIn>
-            <UserButton />
+            <UserButton>
+              <UserButton.MenuItems>
+                <UserButton.Action
+                  label={testState ? 'Value is true' : 'Value is false'}
+                  labelIcon={<DotIcon />}
+                  onClick={() => {
+                    console.log('setting value to ', !testState);
+                    setTestState(!testState);
+                  }}
+                />
+              </UserButton.MenuItems>
+            </UserButton>
           </SignedIn>
           <SignedOut>
             <Link to="/sign-in">Sign In</Link>
