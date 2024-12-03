@@ -39,7 +39,7 @@ export default function RootLayout() {
       <header className="header">
         <div>
           <div>
-            <p>Clerk + React + React Router App</p>
+            <p>Current value is {testState ? 'true' : 'false'}</p>
           </div>
           <SignedIn>
             <UserButton>
