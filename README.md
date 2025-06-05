@@ -25,6 +25,8 @@
    3. Click on the organization in the organization list to make it the active organization
    4. Click on the organization swither in the top left of the page to open it
    5. Notice that the organization is listed twice in the switcher
+   6. Refresh the page
+   7. Notice that the organization is now listed only once in the switcher
 
 ## Expected behavior
 
