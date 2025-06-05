@@ -38,7 +38,7 @@ function Header() {
         </SignedOut>
 
         <SignedIn>
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
         </SignedIn>
       </nav>
     </header>
